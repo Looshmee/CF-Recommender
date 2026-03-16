@@ -1,25 +1,30 @@
-# CF-Recommender
+# Collaborative Filtering Recommender System
 
-This project implements a collaborative filtering-based recommendation system using Pearson correlation to compute item similarity. The system predicts user ratings for items based on historical user-item interaction data.
+## Project Summary
 
-## Table of Contents
+Built a user-based collaborative filtering recommendation system in Python as a final-year Computer Science project at the University of Southampton.
+The system predicts ratings for unseen user-item pairs using Pearson correlation to identify similar users.
 
-- [Introduction](#introduction)
-- [Project Structure](#project-structure)
+## How It Works
 
-## Introduction
+1. **Load** the training data — 100,000 user-item ratings
+2. **Compute similarity** between users using the Pearson correlation coefficient
+3. **Predict ratings** for unseen pairs by taking a weighted average of the most similar users' ratings
+4. **Output** predictions to `submission.csv`
 
-Recommender systems are crucial for many modern applications, providing personalised recommendations to users based on their preferences and behavior. This project demonstrates a basic implementation of a collaborative filtering recommendation system using the Pearson correlation coefficient to compute item similarities. The system is designed to predict ratings that users might give to items they haven't interacted with yet.
+## Why Pearson Correlation
 
-## Project Structure
+Pearson accounts for differences in individual rating scales — a user who always rates 4–5 and one who rates 1–3 can still be identified as similar, where simpler metrics like cosine similarity would miss this.
 
-The project contains the following files:
+## Tools
 
-- **`script.py`**: The main Python script 
+Python 3 | pandas | numpy | GitHub
 
-- **`train_100k_withratings.csv`**: The training dataset, which contains user-item interactions along with their corresponding ratings. This dataset is used to compute item similarities and train the recommendation model.
+## Files
 
-- **`test_100k_withoutratings.csv`**: The test dataset, which includes user-item interactions without ratings. The model predicts ratings for these interactions, which are then compared with actual ratings to evaluate performance.
-
-- **`submission.csv`**: The output file that contains the predicted ratings for the user-item pairs in the test set.
-
+| File | Description |
+|---|---|
+| `script.py` | Main implementation |
+| `train_100k_withratings.csv` | Training data: 100k user-item ratings |
+| `test_100k_withoutratings.csv` | Test data: pairs to predict |
+| `submission.csv` | Predicted ratings output |
